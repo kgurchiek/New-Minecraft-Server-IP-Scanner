@@ -2,9 +2,9 @@ const { MinecraftServerListPing } = require("minecraft-status");
 const fs = require("fs");
 const ipList = require("./masscan.json");
 var file = require("./serverList.json");
-const pingChunkSize = 10000;
+const pingChunkSize = 5000;
 const pingTimeout = 3000;
-const chunkCap = 50;
+const chunkCap = 100;
 var chunksScanned = 0;
 var successes = [];
 
