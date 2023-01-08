@@ -24,14 +24,7 @@ function ping(ip, port) {
 
 function saveData() {
     for (var i = 0; i < successes.length; i++) {
-        var alreadyInList = false;
-        for (var j = 0; j < file.successIPs.length; j++) {
-            if (file.successIPs[i] == successes[i].ip && file.successPorts[i] == successes[i].port) {
-                alreadyInList = true;
-            }
-        }
-
-        if (!alreadyInList) {
+        if (!file.successIPs.includes(successes[i].ip)) {
             file.successIPs.push(successes[i].ip);
             file.successPorts.push(successes[i].port);
         }
