@@ -43,7 +43,7 @@ function saveData() {
 }
 
 function pingChunk(start) {
-    console.log(start + " (chunk " + chunksScanned + ")");
+    console.log(`${start} (chunk ${chunksScanned})`);
 
     for (var i = 0; i < pingChunkSize; i++) {
         ping(ipList[start + i].hit_ip, ipList[start + i].port);
