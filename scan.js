@@ -23,10 +23,10 @@ function ping(ip, port) {
 }
 
 function saveData() {
-    for (var i = 0; i < successes.length; i++) {
-        if (!file.successIPs.includes(successes[i].ip)) {
-            file.successIPs.push(successes[i].ip);
-            file.successPorts.push(successes[i].port);
+    for (let {ip, port} of successes) {
+        if (!file.successIPs.includes(ip)) {
+            file.successIPs.push(ip);
+            file.successPorts.push(port);
         }
     }
 
