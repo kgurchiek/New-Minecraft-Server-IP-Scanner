@@ -22,9 +22,16 @@ function ping(ip, port) {
         });
 }
 
+function isInSuccesses(ip, port) {
+    for (let i in file.successIPs) {
+        if (file.successIPs[i] == ip && file.successPorts[i] == port) return true;
+    }
+    return false;
+}
+
 function saveData() {
     for (let {ip, port} of successes) {
-        if (!file.successIPs.includes(ip)) {
+        if (!isInSuccesses(ip, port)) {
             file.successIPs.push(ip);
             file.successPorts.push(port);
         }
