@@ -53,7 +53,7 @@ function pingChunk(start) {
     setTimeout(function() {
         chunksScanned++;
 
-        if (chunksScanned <= chunkCap) {
+        if (chunksScanned < chunkCap) {
             if (chunksScanned % 20 == 0) {
             saveData();
             }
