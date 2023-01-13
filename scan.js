@@ -46,7 +46,7 @@ function pingChunk(start) {
     console.log(start + " (chunk " + chunksScanned + ")");
 
     for (var i = 0; i < pingChunkSize; i++) {
-        ping(ipList[start + i].hit_ip, ipList[start + i].port);
+        ping(ipList[start + i].ip, ipList[start + i].ports[0].port);
     }
 
     setTimeout(function() {
