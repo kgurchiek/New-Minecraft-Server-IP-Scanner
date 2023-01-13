@@ -4,7 +4,7 @@ const ipList = require("./masscan.json");
 var file = require("./serverList.json");
 const pingChunkSize = 5000;
 const pingTimeout = 3000;
-const chunkCap = 130;
+const chunkCap = Math.floor(ipList.length / pingChunkSize);
 var chunksScanned = 0;
 var successes = [];
 
