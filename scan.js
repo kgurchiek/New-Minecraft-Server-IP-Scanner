@@ -23,11 +23,18 @@ function ping(ip, port) {
         });
 }
 
+function isInSuccesses(ip, port) {
+    for (let i in file.successIPs) {
+        if (file.successIPs[i] == ip && file.successPorts[i] == port) return true;
+    }
+    return false;
+}
+
 function saveData() {
-    for (var i = 0; i < successes.length; i++) {
-        if (!file.successIPs.includes(successes[i].ip)) {
-            file.successIPs.push(successes[i].ip);
-            file.successPorts.push(successes[i].port);
+    for (let {ip, port} of successes) {
+        if (!isInSuccesses(ip, port)) {
+            file.successIPs.push(ip);
+            file.successPorts.push(port);
         }
     }
 
@@ -44,7 +51,7 @@ function saveData() {
 }
 
 function pingChunk(start) {
-    console.log(start + " (chunk " + chunksScanned + ")");
+    console.log(`${start} (chunk ${chunksScanned})`);
 
     for (var i = 0; i < pingChunkSize; i++) {
         ping(ipList[start + i].ip, ipList[start + i].ports[0].port);
