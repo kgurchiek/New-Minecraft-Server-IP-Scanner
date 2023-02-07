@@ -59,15 +59,10 @@ function pingChunk(start) {
 
     setTimeout(function() {
         chunksScanned++;
+        saveData();
 
         if (chunksScanned < chunkCap) {
-            if (chunksScanned % 20 == 0) {
-            saveData();
-            }
-            
             pingChunk(start + pingChunkSize);
-        } else {
-            saveData();
         }
     }, pingTimeout)
 }
