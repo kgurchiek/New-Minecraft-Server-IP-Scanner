@@ -1,8 +1,8 @@
 # Minecraft Server IP Scanner
 
 <div align="center">
-    <img src="https://img.shields.io/github/last-commit/kgurchiek/Minecraft-Server-IP-Scanner" alt="GitHub last commit"/>
-    <img src="https://img.shields.io/github/languages/code-size/kgurchiek/Minecraft-Server-IP-Scanner" alt="GitHub code size in bytes"/>
+    <img src="https://img.shields.io/github/last-commit/kgurchiek/New-Minecraft-Server-IP-Scanner" alt="GitHub last commit"/>
+    <img src="https://img.shields.io/github/languages/code-size/kgurchiek/New-Minecraft-Server-IP-Scanner" alt="GitHub code size in bytes"/>
 </div>
 
 ## About
