@@ -1,0 +1,4 @@
+{
+  "pingChunkSize": 5000,
+  "pingTimeout": 3000
+}
