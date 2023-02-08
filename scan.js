@@ -7,19 +7,18 @@ const pingTimeout = 3000;
 const chunkCap = Math.floor(ipList.servers.length / pingChunkSize);
 console.log("chunkCap: " + chunkCap + "(" + ipList.servers.length + "/" + pingChunkSize + ")");
 var chunksScanned = 0;
-var successes = [];
 
 function ping(ip, port) {
     MinecraftServerListPing.ping(0, ip, port, pingTimeout)
         .then(response => {
             //console.log("success: " + ip);
-            successes.push({
-                ip: ip,
-                port: port
-            });
+            if (!isInSuccesses(ip, port)) {
+                file.successIPs.push(ip);
+                file.successPorts.push(port);
+            }
         })
         .catch(error => {
-        //console.log(error);
+            //console.log(error);
         });
 }
 
@@ -27,17 +26,12 @@ function isInSuccesses(ip, port) {
     for (let i in file.successIPs) {
         if (file.successIPs[i] == ip && file.successPorts[i] == port) return true;
     }
+
     return false;
 }
 
 function saveData() {
-    for (let {ip, port} of successes) {
-        if (!isInSuccesses(ip, port)) {
-            file.successIPs.push(ip);
-            file.successPorts.push(port);
-        }
-    }
-
+    console.log('saving data...');
     file.totalServers = file.successIPs.length;
   
     fs.writeFile("./serverList.json", JSON.stringify(file), 'utf8', function (err) {
@@ -59,10 +53,15 @@ function pingChunk(start) {
 
     setTimeout(function() {
         chunksScanned++;
-        saveData();
 
         if (chunksScanned < chunkCap) {
+            if (chunksScanned % 2 == 0) {
+                saveData();
+            }
+
             pingChunk(start + pingChunkSize);
+        } else {
+            saveData();
         }
     }, pingTimeout)
 }
