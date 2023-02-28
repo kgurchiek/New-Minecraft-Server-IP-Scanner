@@ -1,3 +1,10 @@
+/* TODO:
+- Use MongoDB
+- Change DB to MongoDB
+- Make serverList.json empty
+    People can scan for servers themselves and that is a very large file rn
+*/
+
 const { MinecraftServerListPing } = require("minecraft-status");
 const fs = require("fs");
 const ipList = require("./masscan.json");
